@@ -1,0 +1,265 @@
+{
+    "kpis": {
+        "total_customers": 10000,
+        "churned_customers": 2879,
+        "active_customers": 7121,
+        "churn_rate_pct": 28.79,
+        "avg_monthly_charges": 62.74,
+        "avg_tenure_months": 22.55,
+        "total_monthly_revenue": 627405.29,
+        "total_annualized_revenue": 7528863.48,
+        "annualized_revenue_at_risk": 2220133.56,
+        "pct_revenue_at_risk": 29.49
+    },
+    "by_contract": [
+        {
+            "contract_type": "Month-to-month",
+            "total_cust": 5474,
+            "churned_cust": 1955,
+            "churn_rate": 35.71,
+            "avg_monthly_charge": 62.82,
+            "annual_rev_at_risk": 1504562.52
+        },
+        {
+            "contract_type": "One year",
+            "total_cust": 2671,
+            "churned_cust": 596,
+            "churn_rate": 22.31,
+            "avg_monthly_charge": 62.65,
+            "annual_rev_at_risk": 461887.8
+        },
+        {
+            "contract_type": "Two year",
+            "total_cust": 1855,
+            "churned_cust": 328,
+            "churn_rate": 17.68,
+            "avg_monthly_charge": 62.63,
+            "annual_rev_at_risk": 253683.24
+        }
+    ],
+    "by_tenure": [
+        {
+            "tenure_group": "0\u20136 Months",
+            "total_cust": 2530,
+            "churned_cust": 1042,
+            "churn_rate": 41.19,
+            "avg_monthly_charge": 63.01,
+            "annual_rev_at_risk": 799854.84
+        },
+        {
+            "tenure_group": "13\u201324 Months",
+            "total_cust": 2339,
+            "churned_cust": 599,
+            "churn_rate": 25.61,
+            "avg_monthly_charge": 63.03,
+            "annual_rev_at_risk": 470102.28
+        },
+        {
+            "tenure_group": "25\u201348 Months",
+            "total_cust": 2257,
+            "churned_cust": 515,
+            "churn_rate": 22.82,
+            "avg_monthly_charge": 62.73,
+            "annual_rev_at_risk": 407167.08
+        },
+        {
+            "tenure_group": "49+ Months",
+            "total_cust": 1319,
+            "churned_cust": 223,
+            "churn_rate": 16.91,
+            "avg_monthly_charge": 62.5,
+            "annual_rev_at_risk": 167705.4
+        },
+        {
+            "tenure_group": "7\u201312 Months",
+            "total_cust": 1555,
+            "churned_cust": 500,
+            "churn_rate": 32.15,
+            "avg_monthly_charge": 62.09,
+            "annual_rev_at_risk": 375303.96
+        }
+    ],
+    "by_plan": [
+        {
+            "subscription_plan": "Basic",
+            "total_cust": 3473,
+            "churned_cust": 943,
+            "churn_rate": 27.15,
+            "avg_monthly_charge": 37.21,
+            "annual_rev_at_risk": 423293.4
+        },
+        {
+            "subscription_plan": "Premium",
+            "total_cust": 1981,
+            "churned_cust": 625,
+            "churn_rate": 31.55,
+            "avg_monthly_charge": 97.1,
+            "annual_rev_at_risk": 730755.84
+        },
+        {
+            "subscription_plan": "Standard",
+            "total_cust": 4546,
+            "churned_cust": 1311,
+            "churn_rate": 28.84,
+            "avg_monthly_charge": 67.27,
+            "annual_rev_at_risk": 1066084.32
+        }
+    ],
+    "by_payment": [
+        {
+            "payment_method": "Bank transfer",
+            "total_cust": 2184,
+            "churned_cust": 643,
+            "churn_rate": 29.44,
+            "avg_monthly_charge": 63.06,
+            "annual_rev_at_risk": 502424.16
+        },
+        {
+            "payment_method": "Credit card",
+            "total_cust": 2020,
+            "churned_cust": 568,
+            "churn_rate": 28.12,
+            "avg_monthly_charge": 62.36,
+            "annual_rev_at_risk": 438000.48
+        },
+        {
+            "payment_method": "Electronic check",
+            "total_cust": 3661,
+            "churned_cust": 1045,
+            "churn_rate": 28.54,
+            "avg_monthly_charge": 62.67,
+            "annual_rev_at_risk": 802595.88
+        },
+        {
+            "payment_method": "Mailed check",
+            "total_cust": 2135,
+            "churned_cust": 623,
+            "churn_rate": 29.18,
+            "avg_monthly_charge": 62.89,
+            "annual_rev_at_risk": 477113.04
+        }
+    ],
+    "by_internet": [
+        {
+            "internet_service": "DSL",
+            "total_cust": 5468,
+            "churned_cust": 1488,
+            "churn_rate": 27.21,
+            "avg_monthly_charge": 60.93,
+            "annual_rev_at_risk": 1110779.52
+        },
+        {
+            "internet_service": "Fiber optic",
+            "total_cust": 4532,
+            "churned_cust": 1391,
+            "churn_rate": 30.69,
+            "avg_monthly_charge": 64.93,
+            "annual_rev_at_risk": 1109354.04
+        }
+    ],
+    "by_tickets": [
+        {
+            "support_ticket_group": "0",
+            "total_cust": 1631,
+            "churned_cust": 464,
+            "churn_rate": 28.45,
+            "avg_monthly_charge": 62.46,
+            "annual_rev_at_risk": 360530.4
+        },
+        {
+            "support_ticket_group": "1\u20132",
+            "total_cust": 5688,
+            "churned_cust": 1540,
+            "churn_rate": 27.07,
+            "avg_monthly_charge": 62.97,
+            "annual_rev_at_risk": 1189060.8
+        },
+        {
+            "support_ticket_group": "3\u20135",
+            "total_cust": 2580,
+            "churned_cust": 828,
+            "churn_rate": 32.09,
+            "avg_monthly_charge": 62.33,
+            "annual_rev_at_risk": 634122.24
+        },
+        {
+            "support_ticket_group": "6+",
+            "total_cust": 101,
+            "churned_cust": 47,
+            "churn_rate": 46.53,
+            "avg_monthly_charge": 64.67,
+            "annual_rev_at_risk": 36420.12
+        }
+    ],
+    "by_satisfaction": [
+        {
+            "satisfaction_group": "High",
+            "total_cust": 1561,
+            "churned_cust": 221,
+            "churn_rate": 14.16,
+            "avg_monthly_charge": 62.08,
+            "annual_rev_at_risk": 173145.0
+        },
+        {
+            "satisfaction_group": "Low",
+            "total_cust": 3881,
+            "churned_cust": 1562,
+            "churn_rate": 40.25,
+            "avg_monthly_charge": 62.38,
+            "annual_rev_at_risk": 1179782.88
+        },
+        {
+            "satisfaction_group": "Medium",
+            "total_cust": 4558,
+            "churned_cust": 1096,
+            "churn_rate": 24.05,
+            "avg_monthly_charge": 63.28,
+            "annual_rev_at_risk": 867205.68
+        }
+    ],
+    "segment_matrix": [
+        {
+            "value_tier": "High-Value",
+            "risk_tier": "High-Risk",
+            "customers": 1966,
+            "churned": 1538,
+            "churn_rate": 78.23,
+            "annual_revenue": 1935808.2,
+            "revenue_at_risk": 1515482.76
+        },
+        {
+            "value_tier": "High-Value",
+            "risk_tier": "Low-Risk",
+            "customers": 3036,
+            "churned": 0,
+            "churn_rate": 0.0,
+            "annual_revenue": 2968344.48,
+            "revenue_at_risk": 0.0
+        },
+        {
+            "value_tier": "Low-Value",
+            "risk_tier": "High-Risk",
+            "customers": 1809,
+            "churned": 1341,
+            "churn_rate": 74.13,
+            "annual_revenue": 946297.08,
+            "revenue_at_risk": 704650.8
+        },
+        {
+            "value_tier": "Low-Value",
+            "risk_tier": "Low-Risk",
+            "customers": 3189,
+            "churned": 0,
+            "churn_rate": 0.0,
+            "annual_revenue": 1678413.72,
+            "revenue_at_risk": 0.0
+        }
+    ],
+    "high_risk_profile_vulnerability": {
+        "criteria": "Month-to-month contract + Tenure <= 12 mos + Satisfaction <= 4",
+        "matching_customers": 862,
+        "churned_customers": 488,
+        "churn_rate_pct": 56.61,
+        "annualized_revenue_at_risk": 361398.24
+    }
+}

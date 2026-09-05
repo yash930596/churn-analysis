@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeleConnect — Customer Churn & Retention Intelligence Dashboard</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                <div class="brand-text">
+                    <h2>TeleConnect</h2>
+                    <span>Retention Intelligence</span>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-tab="tab-overview">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Executive Overview</span>
+                </button>
+                <button class="nav-item" data-tab="tab-drivers">
+                    <i class="fa-solid fa-person-walking-arrow-right"></i>
+                    <span>Churn Drivers</span>
+                </button>
+                <button class="nav-item" data-tab="tab-retention">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Retention & Revenue</span>
+                </button>
+                <button class="nav-item" data-tab="tab-insights">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Business Strategy</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="dataset-badge">
+                    <i class="fa-solid fa-database"></i>
+                    <span>10,000 Clean Accounts</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header Bar -->
+            <header class="top-header">
+                <div class="header-title">
+                    <h1 id="page-title">Executive Churn Overview</h1>
+                    <p id="page-subtitle">Real-time analysis of customer retention, contract risk, and revenue metrics</p>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="btn btn-outline" id="reset-filters-btn">
+                        <i class="fa-solid fa-rotate-left"></i> Reset Filters
+                    </button>
+                    <span class="live-indicator"><span class="dot"></span> Live Pipeline</span>
+                </div>
+            </header>
+
+            <!-- Global Filter Bar -->
+            <section class="filter-bar">
+                <div class="filter-group">
+                    <label><i class="fa-solid fa-file-contract"></i> Contract Type</label>
+                    <select id="filter-contract">
+                        <option value="ALL">All Contracts</option>
+                        <option value="Month-to-month">Month-to-month</option>
+                        <option value="One year">One year</option>
+                        <option value="Two year">Two year</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label><i class="fa-solid fa-layer-group"></i> Subscription Plan</label>
+                    <select id="filter-plan">
+                        <option value="ALL">All Plans</option>
+                        <option value="Basic">Basic</option>
+                        <option value="Standard">Standard</option>
+                        <option value="Premium">Premium</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label><i class="fa-solid fa-wifi"></i> Internet Service</label>
+                    <select id="filter-internet">
+                        <option value="ALL">All Services</option>
+                        <option value="DSL">DSL</option>
+                        <option value="Fiber optic">Fiber Optic</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label><i class="fa-solid fa-credit-card"></i> Payment Method</label>
+                    <select id="filter-payment">
+                        <option value="ALL">All Payment Methods</option>
+                        <option value="Electronic check">Electronic check</option>
+                        <option value="Mailed check">Mailed check</option>
+                        <option value="Bank transfer">Bank transfer</option>
+                        <option value="Credit card">Credit card</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- KPI Cards Grid -->
+            <section class="kpi-grid">
+                <div class="kpi-card navy">
+                    <div class="kpi-header">
+                        <span>Total Customers</span>
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="kpi-value" id="kpi-total-customers">10,000</div>
+                    <div class="kpi-sub">Active Customer Base</div>
+                </div>
+
+                <div class="kpi-card green">
+                    <div class="kpi-header">
+                        <span>Active Customers</span>
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <div class="kpi-value" id="kpi-active-customers">7,121</div>
+                    <div class="kpi-sub" id="kpi-active-pct">71.21% Retained</div>
+                </div>
+
+                <div class="kpi-card red">
+                    <div class="kpi-header">
+                        <span>Churned Customers</span>
+                        <i class="fa-solid fa-user-minus"></i>
+                    </div>
+                    <div class="kpi-value" id="kpi-churned-customers">2,879</div>
+                    <div class="kpi-sub" id="kpi-churn-rate">28.79% Churn Rate</div>
+                </div>
+
+                <div class="kpi-card blue">
+                    <div class="kpi-header">
+                        <span>Avg Monthly Charge</span>
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
+                    <div class="kpi-value" id="kpi-avg-charge">$62.74</div>
+                    <div class="kpi-sub">Avg Monthly Fee per Sub</div>
+                </div>
+
+                <div class="kpi-card purple">
+                    <div class="kpi-header">
+                        <span>Annual Rev at Risk</span>
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <div class="kpi-value" id="kpi-rev-risk">$2.22M</div>
+                    <div class="kpi-sub" id="kpi-rev-risk-pct">29.49% of ARR Lost</div>
+                </div>
+            </section>
+
+            <!-- TAB 1: EXECUTIVE OVERVIEW -->
+            <div class="tab-content active" id="tab-overview">
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3><i class="fa-solid fa-chart-pie"></i> Overall Customer Status</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="chart-status-donut"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3><i class="fa-solid fa-file-contract"></i> Churn Rate by Contract Type</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="chart-contract-bar"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3><i class="fa-solid fa-clock-rotate-left"></i> Churn Rate by Tenure Group</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="chart-tenure-bar"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3><i class="fa-solid fa-cubes"></i> Churn Rate by Plan Tier</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="chart-plan-bar"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: CHURN DRIVERS -->
+            <div class="tab-content" id="tab-drivers">
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3><i class="fa-solid fa-headset"></i> Churn Rate by Support Tickets Filed</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="chart-tickets-bar"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3><i class="fa-solid fa-face-smile"></i> Churn Rate by Satisfaction Tier</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="chart-satisfaction-bar"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card wide">
+                        <div class="chart-header">
+                            <h3><i class="fa-solid fa-circle-question"></i> Top Stated Reasons for Cancellation</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="chart-reasons-bar"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: RETENTION & REVENUE -->
+            <div class="tab-content" id="tab-retention">
+                <div class="retention-grid">
+                    <div class="card table-card">
+                        <div class="chart-header">
+                            <h3><i class="fa-solid fa-table-cells"></i> Customer Value / Risk Segmentation Matrix</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Segment Quadrant</th>
+                                        <th>Total Customers</th>
+                                        <th>Churn Rate</th>
+                                        <th>Annualized Revenue</th>
+                                        <th>Annual Revenue at Risk</th>
+                                        <th>Retention Priority</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="badge high-risk">High-Value, High-Risk</span></td>
+                                        <td>1,966</td>
+                                        <td><strong>78.23%</strong></td>
+                                        <td>$1,935,808</td>
+                                        <td><span class="text-danger">$1,515,482.76</span></td>
+                                        <td><span class="priority-tag p1">P1 — Immediate</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge high-risk">Low-Value, High-Risk</span></td>
+                                        <td>1,809</td>
+                                        <td><strong>74.13%</strong></td>
+                                        <td>$946,297</td>
+                                        <td><span class="text-danger">$704,650.80</span></td>
+                                        <td><span class="priority-tag p2">P2 — Secondary</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge low-risk">High-Value, Low-Risk</span></td>
+                                        <td>3,036</td>
+                                        <td>0.00%</td>
+                                        <td>$2,968,344</td>
+                                        <td>$0.00</td>
+                                        <td><span class="priority-tag p3">Maintain Loyalty</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge low-risk">Low-Value, Low-Risk</span></td>
+                                        <td>3,189</td>
+                                        <td>0.00%</td>
+                                        <td>$1,678,414</td>
+                                        <td>$0.00</td>
+                                        <td><span class="priority-tag p4">Low Priority</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: BUSINESS STRATEGY -->
+            <div class="tab-content" id="tab-insights">
+                <div class="insights-container">
+                    <div class="insight-card">
+                        <div class="insight-number">1</div>
+                        <div class="insight-body">
+                            <h4>Annual Contract Migration Incentives</h4>
+                            <p><strong>Problem:</strong> Month-to-month contracts drive 35.71% churn rate, accounting for $1.50M+ annual revenue at risk.</p>
+                            <p><strong>Action:</strong> Offer 10% annual discount or 6 months free streaming for Month-to-month accounts upgrading to 1-year contracts.</p>
+                        </div>
+                    </div>
+
+                    <div class="insight-card">
+                        <div class="insight-number">2</div>
+                        <div class="insight-body">
+                            <h4>First-Year Onboarding Program</h4>
+                            <p><strong>Problem:</strong> 53%+ of churn occurs in months 1–12 (`0-6 mos` has 41.19% churn rate).</p>
+                            <p><strong>Action:</strong> Deploy automated welcome check-ins at Day 14, 45, and 90 to guide new subscribers.</p>
+                        </div>
+                    </div>
+
+                    <div class="insight-card">
+                        <div class="insight-number">3</div>
+                        <div class="insight-body">
+                            <h4>Support Ticket Escalation Alert</h4>
+                            <p><strong>Problem:</strong> Accounts with 6+ support tickets churn at 46.53%.</p>
+                            <p><strong>Action:</strong> Auto-route accounts filing their 3rd support ticket to Senior Retention Specialists.</p>
+                        </div>
+                    </div>
+
+                    <div class="insight-card">
+                        <div class="insight-number">4</div>
+                        <div class="insight-body">
+                            <h4>Fiber Optic Price Matching</h4>
+                            <p><strong>Problem:</strong> Premium plan subscribers churn at 31.55% due to competitor counter-offers.</p>
+                            <p><strong>Action:</strong> Provide flexible counter-offer toolkits to match competitor deals for high-value fiber accounts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

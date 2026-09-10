@@ -1,11 +1,19 @@
 # Customer Churn Analysis & Retention Intelligence Dashboard (TeleConnect)
 
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Interactive_Web_Dashboard-10B981?style=for-the-badge&logo=googlechrome&logoColor=white)](https://yash930596.github.io/churn-analysis/)
 [![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-1.5+-150458?style=flat&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![SQL](https://img.shields.io/badge/SQL-PostgreSQL%20%2F%20MySQL-4169E1?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Power BI](https://img.shields.io/badge/Power_BI-Dashboard_Spec-F2C94C?style=flat&logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
 
 An end-to-end data analytics portfolio project investigating subscription customer churn, quantifying annualized revenue at risk, constructing a 4-quadrant customer risk matrix, and delivering data-driven retention strategies for a telecommunications provider called **TeleConnect**.
+
+---
+
+## 🌐 Live Interactive Dashboard Demo
+Click below to open and interact with the live deployed dashboard in your browser (no installation required):
+
+👉 **[Launch Live Web Dashboard](https://yash930596.github.io/churn-analysis/)**
 
 ---
 
@@ -19,6 +27,7 @@ An end-to-end data analytics portfolio project investigating subscription custom
 ---
 
 ## 🛠️ Tools & Technologies
+- **Live Web App Host**: GitHub Pages ([Live App Link](https://yash930596.github.io/churn-analysis/))
 - **Data Generation & Cleaning**: Python (`pandas`, `numpy`)
 - **Exploratory Visual Analytics**: Python (`matplotlib`, `seaborn`)
 - **Database & Querying**: PostgreSQL / MySQL (`DDL Schema`, `Validation Queries`, `20 Advanced Analytical Queries`)
@@ -27,11 +36,24 @@ An end-to-end data analytics portfolio project investigating subscription custom
 
 ---
 
+## 📊 Key Baseline Metrics
+- **Total Customers**: 10,000
+- **Active Customers**: 7,121 (**71.21%**)
+- **Churned Customers**: 2,879 (**28.79%** Baseline Churn Rate)
+- **Average Monthly Charge**: **$62.74**
+- **Average Customer Tenure**: **22.55 Months**
+- **Annualized Revenue at Risk**: **$2,220,133.56** (**29.49%** of ARR)
+
+---
+
 ## 📂 Project Structure
 ```
 customer-churn-analysis/
-├── README.md                           # Repository Overview & Quick Start
+├── README.md                           # Repository Overview & Live Demo Link
 ├── requirements.txt                    # Python Dependencies
+├── index.html                          # Live Web Dashboard Application
+├── styles.css                          # Custom Glassmorphism UI Styling
+├── app.js                             # Interactive Dashboard Logic & Chart.js Visuals
 │
 ├── data/
 │   ├── raw/
@@ -69,11 +91,11 @@ customer-churn-analysis/
 ---
 
 ## 📊 Key Analytical Findings
-1. **Overall Churn Rate**: **26.8%** of total accounts have cancelled, placing over **$2.6M in estimated annualized revenue at risk**.
-2. **Contract Type Impact**: **Month-to-month subscribers** churn at **~42%**, compared to **~11%** for 1-year contracts and **<3%** for 2-year contracts.
-3. **Tenure Vulnerability**: Over **65% of churn** occurs within the first 12 months of service (`0–6 Months` and `7–12 Months`).
-4. **Support Ticket Threshold**: Customers filing **3 or more support tickets** display a churn rate exceeding **48%**.
-5. **Competitor & Price Pressure**: Fiber Optic subscribers facing competitor counter-offers and high monthly charges (>$80/mo) represent the largest high-value churn segment.
+1. **Overall Churn Rate**: **28.79%** of total accounts have cancelled, placing over **$2.22M in estimated annualized revenue at risk**.
+2. **Contract Type Impact**: **Month-to-month subscribers** churn at **35.71%**, compared to **22.31%** for 1-year contracts and **17.68%** for 2-year contracts.
+3. **Tenure Vulnerability**: Over **53% of churn** occurs within the first 12 months of service (`0–6 Months` and `7–12 Months`).
+4. **Support Ticket Threshold**: Customers filing **6 or more support tickets** display a churn rate of **46.53%**.
+5. **Competitor & Price Pressure**: Premium subscribers facing competitor counter-offers and high monthly charges (>$80/mo) represent the largest high-value churn segment.
 
 ---
 
@@ -85,56 +107,32 @@ customer-churn-analysis/
 
 ---
 
-## 🚀 How to Run the Project
+## 🚀 How to Run the Project Locally
 
 ### 1. Clone & Set Up Environment
 ```bash
-git clone https://github.com/your-username/customer-churn-analysis.git
-cd customer-churn-analysis
+git clone https://github.com/yash930596/churn-analysis.git
+cd churn-analysis
 pip install -r requirements.txt
 ```
 
-### 2. Generate Raw Data
+### 2. Generate & Clean Data
 ```bash
 python src/data_generation.py
-```
-*Generates `data/raw/customers.csv` (10,000 raw records + intentional noise).*
-
-### 3. Run Cleaning Pipeline
-```bash
 python src/data_cleaning.py
 ```
-*Outputs cleaned dataset `data/processed/customers_clean.csv`.*
 
-### 4. Generate EDA Visualizations
+### 3. Run Visual Analytics & Statistical Analysis
 ```bash
 python src/eda.py
-```
-*Exports 10 visual analytics charts to `outputs/charts/`.*
-
-### 5. Run Statistical Churn Analysis
-```bash
 python src/churn_analysis.py
 ```
-*Calculates exact KPI breakdowns and exports `outputs/reports/churn_summary_metrics.json`.*
-
-### 6. Execute SQL Database Scripts
-Import `data/processed/customers_clean.csv` into PostgreSQL or MySQL, then run:
-- `sql/01_schema.sql`
-- `sql/02_data_validation.sql`
-- `sql/03_churn_analysis.sql`
 
 ---
 
 ## 💡 Skills Demonstrated
+- **Full Web App Deployment**: GitHub Pages live demo hosting.
 - **Data Engineering**: Data generation, deduplication, missing value imputation, outlier handling, categorical standardization.
 - **SQL Analytics**: DDL schema design, indexes, CTEs, Window Functions (`RANK()`, `ROW_NUMBER()`), conditional aggregations (`CASE WHEN`).
 - **Data Visualization**: Publication-quality Seaborn/Matplotlib charts and Power BI 3-page canvas design.
 - **Business Acumen**: Revenue-at-risk modeling, 4-quadrant customer segmentation matrix, executive storytelling, actionable recommendations.
-
----
-
-## ⚠️ Limitations & Future Work
-- **Observational Data**: Associations between variables do not prove direct causality.
-- **Synthetic Data**: Dataset is generated synthetically for portfolio purposes.
-- **Future ML Extension**: Project can be extended into predictive machine learning (Logistic Regression / Random Forest) using Recall to maximize detection of at-risk accounts.
